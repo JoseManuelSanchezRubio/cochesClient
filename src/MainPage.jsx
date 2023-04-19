@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
+import './MainPage.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 
-export function ReservationCard() {
+export function MainPage() {
 
     //Recuperamos las sucursales de la base de datos
     const [branches, setBranches] = useState([]);
@@ -32,14 +33,28 @@ export function ReservationCard() {
     const [initialDate, setInitialDate] = useState('');
     const [finalDate, setFinalDate] = useState('');
     const [cars, setCars] = useState([]);
+    /*     const carsList = cars.map((car) => {
+            return (
+                car = car.id
+            )
+        })
+    
+        useEffect(() => {
+            fetch(`http://localhost:5218/api/Car/branch/${branchId}`)
+                .then(res => res.json())
+                .then(data => setCars(data))
+        }, [branchId, initialDate, finalDate]); */
+
+
+
 
 
 
 
     return (
-        <form>
-            <h1 className="mb-4">Alquiler de coches</h1>
-            <div className="d-flex align-items-center">
+        <form onSubmit={() => (alert())}>
+            <h1 className="mb-4 text-center">Alquiler de coches</h1>
+            <div className="d-flex align-items-center justify-content-center">
                 <div className="me-4">
                     <label>Sucursal de recogida</label><br />
                     <select className="form-select" aria-label="" id="branchId">
@@ -66,7 +81,7 @@ export function ReservationCard() {
             </div>
             <br />
             <div>
-                <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center justify-content-center">
                     <div className="me-4">
                         <label>Edad del conductor</label><br />
                         <select className="form-select" aria-label="" name="age">
