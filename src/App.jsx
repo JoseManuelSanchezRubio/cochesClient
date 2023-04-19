@@ -1,11 +1,9 @@
 import { ReservationCard } from './ReservationCard'
 import './App.css'
 
-function App() {
+export default function App() {
   return (
-    
+
     <ReservationCard />
   )
 }
-
-export default App
