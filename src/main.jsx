@@ -4,9 +4,9 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import { MainPage } from './MainPage';
 import ErrorPage from './ErrorPage';
-import ChooseCar from './ChooseCar';
+import ChooseCar from './routes/ChooseCar';
+import MainPage, { loader as mainPageLoader } from "./routes/MainPage";
 
 
 const router = createBrowserRouter([
@@ -14,6 +14,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <MainPage />,
     errorElement: <ErrorPage />,
+    loader: mainPageLoader,
   },
   {
     path: "/book",

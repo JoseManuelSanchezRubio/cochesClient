@@ -1,18 +1,19 @@
-import { useState, useEffect } from "react";
-import './MainPage.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
+import { useState } from "react";
+import { getBranches } from '../endpoints';
+import { Outlet, Link, useLoaderData, Form } from "react-router-dom";
+import '../MainPage.css';
 
 
-export function MainPage() {
 
-    //Recuperamos las sucursales de la base de datos
-    const [branches, setBranches] = useState([]);
-    useEffect(() => {
-        fetch('http://localhost:5218/api/Branch')
-            .then(res => res.json())
-            .then(data => setBranches(data))
-    }, []);
+export async function loader() {
+    const branches = await getBranches();
+    return { branches };
+}
+
+export default function MainPage() {
+
+    const { branches } = useLoaderData();
+
 
     const branchesList = branches.map((branch) => {
         return (
@@ -32,29 +33,12 @@ export function MainPage() {
     const [branchId, setBranchId] = useState(1);
     const [initialDate, setInitialDate] = useState('');
     const [finalDate, setFinalDate] = useState('');
-    const [cars, setCars] = useState([]);
-    /*     const carsList = cars.map((car) => {
-            return (
-                car = car.id
-            )
-        })
-    
-        useEffect(() => {
-            fetch(`http://localhost:5218/api/Car/branch/${branchId}`)
-                .then(res => res.json())
-                .then(data => setCars(data))
-        }, [branchId, initialDate, finalDate]); */
-
-
-
-
-
 
 
     return (
         <form onSubmit={() => (alert())}>
-            <h1 className="mb-4 text-center">Alquiler de coches</h1>
-            <div className="d-flex align-items-center justify-content-center">
+            <h1 className="mb-4">Alquiler de coches</h1>
+            <div className="d-flex align-items-center">
                 <div className="me-4">
                     <label>Sucursal de recogida</label><br />
                     <select className="form-select" aria-label="" id="branchId">
@@ -81,7 +65,7 @@ export function MainPage() {
             </div>
             <br />
             <div>
-                <div className="d-flex align-items-center justify-content-center">
+                <div className="d-flex align-items-center">
                     <div className="me-4">
                         <label>Edad del conductor</label><br />
                         <select className="form-select" aria-label="" name="age">
