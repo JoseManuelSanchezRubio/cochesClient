@@ -7,6 +7,7 @@ import {
 import ErrorPage from './ErrorPage';
 import Login from './routes/Login';
 import Logup from './routes/Logup';
+import Profile from './routes/Profile';
 import ChooseCar from './routes/ChooseCar';
 import MainPage, { loader as mainPageLoader, action as mainPageAction } from "./routes/MainPage";
 
@@ -32,6 +33,11 @@ const router = createBrowserRouter([
   {
     path: "/logup",
     element: <Logup />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
     errorElement: <ErrorPage />,
   },
 ]);

@@ -23,7 +23,6 @@ export default function CarList(props) {
     }
     if (props.change == 'manual') {
         listToConvertToHtml = props.cars.filter(car => car.isAutomatic == false);
-
     }
 
 

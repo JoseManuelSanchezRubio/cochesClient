@@ -2,6 +2,14 @@ import { Link } from "react-router-dom"
 
 
 export default function Nav(props) {
+
+    function logout() {
+        localStorage.removeItem("token");
+        localStorage.removeItem("customer");
+        window.location.href = "/";
+    }
+
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <Link className="navbar-brand ps-5" to="/">Alquiler de coches</Link>
@@ -10,7 +18,7 @@ export default function Nav(props) {
             </button>
             <div className={props.isLogged ? "collapse navbar-collapse visually-hidden" : "collapse navbar-collapse"} id="navbarNav">
                 <ul className="navbar-nav">
-                    <li className="nav-item active">
+                    <li className="nav-item">
                         <Link className="nav-link" to="/login">Login</Link>
                     </li>
                     <li className="nav-item">
@@ -20,11 +28,11 @@ export default function Nav(props) {
             </div>
             <div className={props.isLogged ? "collapse navbar-collapse" : "collapse navbar-collapse visually-hidden"} id="navbarNav">
                 <ul className="navbar-nav">
-                    <li className="nav-item active">
-                        <Link className="nav-link" to="/login">Mi perfil</Link>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/profile">Mi perfil</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/logup">Cerrar sesión</Link>
+                        <a className="nav-link" onClick={logout} style={{ cursor: 'pointer' }}>Cerrar sesión</a>
                     </li>
                 </ul>
             </div>

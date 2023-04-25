@@ -10,6 +10,7 @@ export default function Login() {
     function checkLogin(data) {
         if (data.status) {
             localStorage.setItem('token', data.token)
+            localStorage.setItem('customer', JSON.stringify(data.customer))
             alert("Login correcto");
             window.location.href = "/booking";
         } else {

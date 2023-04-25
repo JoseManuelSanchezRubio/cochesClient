@@ -8,16 +8,13 @@ import Nav from '../Nav.jsx';
 
 export default function ChooseCar() {
 
-    //const [selectedCar, setSelectedCar] = useState(0);
+
     const [typeCars, setTypeCars] = useState([]);
     let cars = []
     const [change, setChange] = useState('');
     const [fuel, setFuel] = useState('');
 
-    /* const selectedCarProp = (selectedCar) => {
-        setSelectedCar(selectedCar);
-    } */
-    //console.log(typeCars)
+
     useEffect(() => {
         const bookingData = localStorage.getItem('bookingData');
         const bookingDataJSON = JSON.parse(bookingData);
@@ -33,6 +30,7 @@ export default function ChooseCar() {
             .then(res => res.json())
             .then(data => setTypeCars(data))
     }, []);
+
 
     for (let i = 0; i < typeCars.length; i++) {
         if (typeCars[i] == 1) {

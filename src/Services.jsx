@@ -35,7 +35,10 @@ export default function Services() {
         if (inAnotherBranch) {
             const requestOptions = {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' }, //añadir token
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'bearer ' + localStorage.getItem('token')
+                },
                 body: JSON.stringify({
                     initialDate: initialDate,
                     finalDate: finalDate,
@@ -57,7 +60,10 @@ export default function Services() {
         } else {
             const requestOptions = {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' }, //añadir token
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'bearer ' + localStorage.getItem('token')
+                },
                 body: JSON.stringify({
                     initialDate: initialDate,
                     finalDate: finalDate,
