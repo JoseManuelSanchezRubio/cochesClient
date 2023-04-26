@@ -48,7 +48,7 @@ export default function Logup() {
 
 
     let isLogged = false;
-    if (localStorage.getItem('token')) isLogged = true;
+    if (sessionStorage.getItem('token')) isLogged = true;
 
 
     return (

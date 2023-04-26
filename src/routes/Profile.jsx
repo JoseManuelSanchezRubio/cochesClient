@@ -7,15 +7,16 @@ import { useEffect, useState } from "react";
 export default function Profile() {
 
     let isLogged = false;
-    if (localStorage.getItem('token')) isLogged = true;
-    const customer = JSON.parse(localStorage.getItem('customer'));
+    if (sessionStorage.getItem('token')) isLogged = true;
+    if (!isLogged) return window.location.href = '/login';
+    const customer = JSON.parse(sessionStorage.getItem('customer'));
     const [reservations, setReservations] = useState([]);
 
     const requestOptions = {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'bearer ' + localStorage.getItem('token')
+            'Authorization': 'bearer ' + sessionStorage.getItem('token')
         }
     };
 
@@ -31,11 +32,11 @@ export default function Profile() {
 
             <div className="accordion-item" key={item.id}>
                 <h2 className="accordion-header">
-                    <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true">
+                    <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target={'#id' + item.id} aria-expanded="true">
                         Coche: {item.carId}
                     </button>
                 </h2>
-                <div id="collapseOne" className="accordion-collapse collapse" data-bs-parent="">
+                <div id={'id' + item.id} className="accordion-collapse collapse" data-bs-parent="">
                     <ul className="accordion-body ps-5">
                         <li>Fecha de inicio: {item.initialDate}</li>
                         <li>Fecha fin: {item.finalDate}</li>

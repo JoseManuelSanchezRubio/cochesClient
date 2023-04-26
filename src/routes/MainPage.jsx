@@ -25,7 +25,7 @@ export async function action() {
     }
 
     const bookingData = [branchId, returnBranchId, initialDate, finalDate, age, inAnotherBranch];
-    localStorage.setItem('bookingData', JSON.stringify(bookingData));
+    sessionStorage.setItem('bookingData', JSON.stringify(bookingData));
 
 
     return redirect("/booking");
@@ -60,7 +60,7 @@ export default function MainPage() {
     }
 
     let isLogged = false;
-    if (localStorage.getItem('token')) isLogged = true;
+    if (sessionStorage.getItem('token')) isLogged = true;
 
     return (
         <div>

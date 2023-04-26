@@ -4,8 +4,8 @@ import { Link } from "react-router-dom"
 export default function Nav(props) {
 
     function logout() {
-        localStorage.removeItem("token");
-        localStorage.removeItem("customer");
+        sessionStorage.removeItem("token");
+        sessionStorage.removeItem("customer");
         window.location.href = "/";
     }
 

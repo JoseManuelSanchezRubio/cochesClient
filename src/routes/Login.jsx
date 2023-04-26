@@ -9,10 +9,10 @@ export default function Login() {
 
     function checkLogin(data) {
         if (data.status) {
-            localStorage.setItem('token', data.token)
-            localStorage.setItem('customer', JSON.stringify(data.customer))
-            alert("Login correcto");
-            window.location.href = "/booking";
+            sessionStorage.setItem('token', data.token)
+            sessionStorage.setItem('customer', JSON.stringify(data.customer))
+            if (sessionStorage.getItem('bookingData')) window.location.href = "/booking";
+            if (!sessionStorage.getItem('bookingData')) window.location.href = "/";
         } else {
             alert(data.token);
         }
@@ -42,7 +42,7 @@ export default function Login() {
     }
 
     let isLogged = false;
-    if (localStorage.getItem('token')) isLogged = true;
+    if (sessionStorage.getItem('token')) isLogged = true;
 
     return (
         <div>

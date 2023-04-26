@@ -6,10 +6,10 @@ import { useState } from "react";
 export default function Services() {
 
     let isLogged = false;
-    if (localStorage.getItem('token')) isLogged = true;
+    if (sessionStorage.getItem('token')) isLogged = true;
 
     const handleClick = (e) => {
-        let carSelected = localStorage.getItem("carSelected");
+        let carSelected = sessionStorage.getItem("carSelected");
 
         if (carSelected == 0) return alert("Debes seleccionar un coche");
 
@@ -18,7 +18,7 @@ export default function Services() {
             window.location.href = "/login";
         }
 
-        const bookingData = localStorage.getItem('bookingData');
+        const bookingData = sessionStorage.getItem('bookingData');
         const bookingDataJSON = JSON.parse(bookingData);
 
         const branchId = +bookingDataJSON[0];
@@ -37,7 +37,7 @@ export default function Services() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'bearer ' + localStorage.getItem('token')
+                    'Authorization': 'bearer ' + sessionStorage.getItem('token')
                 },
                 body: JSON.stringify({
                     initialDate: initialDate,
@@ -62,7 +62,7 @@ export default function Services() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'bearer ' + localStorage.getItem('token')
+                    'Authorization': 'bearer ' + sessionStorage.getItem('token')
                 },
                 body: JSON.stringify({
                     initialDate: initialDate,
@@ -82,6 +82,8 @@ export default function Services() {
                 .then(response => response.json())
                 .then(data => console.log(data))
         }
+        alert("Reserva realizada con éxito");
+        window.location.href = "/profile";
     }
 
     const [isInternational, setIsInternational] = useState(false);

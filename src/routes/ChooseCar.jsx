@@ -18,7 +18,7 @@ export default function ChooseCar() {
 
 
     useEffect(() => {
-        const bookingData = localStorage.getItem('bookingData');
+        const bookingData = sessionStorage.getItem('bookingData');
         const bookingDataJSON = JSON.parse(bookingData);
 
         const branchId = +bookingDataJSON[0];
@@ -27,7 +27,6 @@ export default function ChooseCar() {
         const finalDate = bookingDataJSON[3];
         const age = bookingDataJSON[4];
         const inAnotherBranch = bookingDataJSON[5];
-
         fetch(`http://localhost:5218/api/Car/availability/${branchId}/${initialDate}/${finalDate}`)
             .then(res => res.json())
             .then(data => setTypeCars(data))
@@ -35,18 +34,10 @@ export default function ChooseCar() {
     }, []);
 
 
-    for (let i = 0; i < typeCars.length; i++) {
-        if (typeCars[i] == 1) {
-            cars.push({ typeCarId: typeCars[i], brand: 'Fiat', model: '500', isAutomatic: false, isGasoline: true })
-        }
-        if (typeCars[i] == 2) {
-            cars.push({ typeCarId: typeCars[i], brand: 'Renault', model: 'Megane', isAutomatic: true, isGasoline: true })
-        }
-        if (typeCars[i] == 3) {
-            cars.push({ typeCarId: typeCars[i], brand: 'Audi', model: 'A1', isAutomatic: false, isGasoline: false })
-        }
 
-        //console.log(cars);
+    for (let i = 0; i < typeCars.length; i++) {
+
+        cars.push(typeCars[i])
         if (change == 'automatic') {
             cars = cars.filter(car => car.isAutomatic == true);
         }
@@ -64,7 +55,7 @@ export default function ChooseCar() {
 
 
     let isLogged = false;
-    if (localStorage.getItem('token')) isLogged = true;
+    if (sessionStorage.getItem('token')) isLogged = true;
 
     return (
         <div>
