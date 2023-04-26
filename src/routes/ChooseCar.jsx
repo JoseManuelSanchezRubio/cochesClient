@@ -15,6 +15,8 @@ export default function ChooseCar() {
     const [fuel, setFuel] = useState('');
 
 
+
+
     useEffect(() => {
         const bookingData = localStorage.getItem('bookingData');
         const bookingDataJSON = JSON.parse(bookingData);
@@ -29,6 +31,7 @@ export default function ChooseCar() {
         fetch(`http://localhost:5218/api/Car/availability/${branchId}/${initialDate}/${finalDate}`)
             .then(res => res.json())
             .then(data => setTypeCars(data))
+
     }, []);
 
 
@@ -44,6 +47,18 @@ export default function ChooseCar() {
         }
 
         //console.log(cars);
+        if (change == 'automatic') {
+            cars = cars.filter(car => car.isAutomatic == true);
+        }
+        if (change == 'manual') {
+            cars = cars.filter(car => car.isAutomatic == false);
+        }
+        if (fuel == 'gasoline') {
+            cars = cars.filter(car => car.isGasoline == true);
+        }
+        if (fuel == 'diesel') {
+            cars = cars.filter(car => car.isGasoline == false);
+        }
 
     }
 
@@ -77,7 +92,7 @@ export default function ChooseCar() {
 
                 </div>
                 <br />
-                <CarList cars={cars} change={change} fuel={fuel} />
+                <CarList cars={cars} />
                 <br />
                 <Services cars={cars} />
             </div>

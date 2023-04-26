@@ -14,16 +14,7 @@ export default function CarList(props) {
 
     let listToConvertToHtml = props.cars;
 
-    if (props.change == 'all') {
-        listToConvertToHtml = props.cars;
-    }
-    if (props.change == 'automatic') {
-        listToConvertToHtml = props.cars.filter(car => car.isAutomatic == true);
 
-    }
-    if (props.change == 'manual') {
-        listToConvertToHtml = props.cars.filter(car => car.isAutomatic == false);
-    }
 
 
     let carsList = listToConvertToHtml.map((item) => {
