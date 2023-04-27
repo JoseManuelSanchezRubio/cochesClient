@@ -57,10 +57,10 @@ export default function Profile() {
     return (
         <div>
             <Nav isLogged={isLogged} />
-            <div className="p-5">
+            <div className="pt-5 container">
                 <h1 className="mb-4">Bienvenido, {customer.name}</h1>
                 <h4>Información personal:</h4>
-                <div className="list-group w-25">
+                <div className="list-group">
                     <div className="list-group-item list-group-item-action">Nombre: {customer.name}</div>
                     <div className="list-group-item list-group-item-action">Apellidos: {customer.surname}</div>
                     <div className="list-group-item list-group-item-action">Email: {customer.email}</div>

@@ -47,28 +47,30 @@ export default function Login() {
     return (
         <div>
             <Nav isLogged={isLogged} />
-            <div className="p-5">
-                <h1 className="mb-4">Iniciar sesión</h1>
-                <form className="w-25">
-                    <div className="form-outline mb-4">
-                        <label className="form-label" htmlFor="form2Example1">Email</label>
-                        <input type="email" id="form2Example1" className="form-control" onChange={(e) => setEmail(e.target.value)} />
-                    </div>
+            <section className="d-flex justify-content-center pt-5">
+                <div>
+                    <h1 className="mb-4">Iniciar sesión</h1>
+                    <form style={{ width: "30vw" }}>
+                        <div className="form-outline mb-4">
+                            <label className="form-label" htmlFor="form2Example1">Email</label>
+                            <input type="email" id="form2Example1" className="form-control" onChange={(e) => setEmail(e.target.value)} />
+                        </div>
 
 
-                    <div className="form-outline mb-4">
-                        <label className="form-label" htmlFor="form2Example2">Contraseña</label>
-                        <input type="password" id="form2Example2" className="form-control" onChange={(e) => setPassword(e.target.value)} />
-                    </div>
+                        <div className="form-outline mb-4">
+                            <label className="form-label" htmlFor="form2Example2">Contraseña</label>
+                            <input type="password" id="form2Example2" className="form-control" onChange={(e) => setPassword(e.target.value)} />
+                        </div>
 
-                    <button type="submit" className="btn btn-warning btn-block mb-4" onClick={handleSubmit}>Iniciar sesión</button>
+                        <button type="submit" className="btn btn-warning btn-block mb-4" onClick={handleSubmit}>Iniciar sesión</button>
 
 
-                    <div className="text-center">
-                        <p>¿No tienes una cuenta? <Link to='/logup'>Regístrate</Link></p>
-                    </div>
-                </form>
-            </div>
+                        <div className="text-center">
+                            <p>¿No tienes una cuenta? <Link to='/logup'>Regístrate</Link></p>
+                        </div>
+                    </form>
+                </div>
+            </section>
         </div>
     )
 }

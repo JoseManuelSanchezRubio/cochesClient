@@ -60,33 +60,35 @@ export default function ChooseCar() {
     return (
         <div>
             <Nav isLogged={isLogged} />
-            <div className='p-5'>
-                <h1 className='mb-4 text-center'>Elige el coche que necesites</h1>
-                <div className="d-flex justify-content-center">
-                    <div className="form-floating w-25 me-2">
-                        <select className="form-select" id="typeCar" aria-label="" onChange={(event) => { setChange(event.target.value) }}>
-                            <option value="all" defaultValue='all'>Todos</option>
-                            <option value="automatic">Automático</option>
-                            <option value="manual">Manual</option>
-                        </select>
-                        <label htmlFor="typeCar">Tipo de cambio</label>
-                    </div>
-                    <div className="form-floating w-25">
-                        <select className="form-select" id="typeFuel" aria-label="" onChange={(event) => { setFuel(event.target.value) }}>
-                            <option value="all" defaultValue='all'>Todos</option>
-                            <option value="diesel">Diésel</option>
-                            <option value="gasoline">Gasolina</option>
-                        </select>
-                        <label htmlFor="typeFuel">Tipo de combustible</label>
-                    </div>
+            <section className='container d-flex justify-content-center pt-5'>
+                <div>
+                    <h1 className='mb-4 text-center'>Elige el coche que necesites</h1>
+                    <div className="d-flex justify-content-center">
+                        <div className="form-floating me-2">
+                            <select className="form-select" id="typeCar" style={{ width: '25vw' }} onChange={(event) => { setChange(event.target.value) }}>
+                                <option value="all" defaultValue='all'>Todos</option>
+                                <option value="automatic">Automático</option>
+                                <option value="manual">Manual</option>
+                            </select>
+                            <label htmlFor="typeCar">Tipo de cambio</label>
+                        </div>
+                        <div className="form-floating">
+                            <select className="form-select" id="typeFuel" style={{ width: '25vw' }} onChange={(event) => { setFuel(event.target.value) }}>
+                                <option value="all" defaultValue='all'>Todos</option>
+                                <option value="diesel">Diésel</option>
+                                <option value="gasoline">Gasolina</option>
+                            </select>
+                            <label htmlFor="typeFuel">Tipo de combustible</label>
+                        </div>
 
 
+                    </div>
+                    <br />
+                    <CarList cars={cars} />
+                    <br />
+                    <Services cars={cars} />
                 </div>
-                <br />
-                <CarList cars={cars} />
-                <br />
-                <Services cars={cars} />
-            </div>
+            </section>
         </div>
     )
 }

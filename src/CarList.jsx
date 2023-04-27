@@ -22,7 +22,7 @@ export default function CarList(props) {
             <div className="card me-2" key={item.id}>
 
                 <div className="card-body">
-                    <img src={`src/assets/${item.model}.png`} className='card-img-top mb-2'></img>
+                    <img src={`src/assets/${item.model}.webp`} className='card-img-top mb-2' style={{ width: '250px', height: '150px' }}></img>
                     <h5 className="card-title">{item.brand} {item.model}</h5>
                     <div className="card-text">{item.isAutomatic ? 'Automático' : 'Manual'}</div>
                     <div className="card-text mb-2">{item.isGasoline ? 'Gasolina' : 'Diésel'}</div>

@@ -102,20 +102,22 @@ export default function Services() {
     return (
         <div>
             <h1>Servicios adicionales</h1>
-            <div className="form-check me-4">
+            <div className="form-check">
                 <input className="form-check-input" type="checkbox" value="international" onChange={checkIsInternational} id="international" />
                 <label className="form-check-label">
                     Quiero conducir por Portugal, Francia o Andorra
                 </label>
             </div>
-            <div className="form-check me-4">
+            <div className="my-2"></div>
+            <div className="form-check">
                 <input className="form-check-input" type="checkbox" value="gps" onChange={checkHasGps} id="gps" />
                 <label className="form-check-label">
                     Añadir GPS
                 </label>
             </div>
-            <div className="form-floating w-25 me-2">
-                <select className="form-select" id="drivers" aria-label="" onChange={(event) => { setNumberOfDrivers(event.target.value) }}>
+            <div className="my-2"></div>
+            <div className="form-floating">
+                <select className="form-select" id="drivers" style={{ width: '25vw' }} onChange={(event) => { setNumberOfDrivers(event.target.value) }}>
                     <option value="1" defaultValue='1'>Un conductor</option>
                     <option value="2">Dos conductores</option>
                     <option value="3">Tres conductores</option>

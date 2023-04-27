@@ -9,6 +9,7 @@ import Login from './routes/Login';
 import Logup from './routes/Logup';
 import Profile from './routes/Profile';
 import ChooseCar from './routes/ChooseCar';
+import Admin from './routes/Admin';
 import MainPage, { loader as mainPageLoader, action as mainPageAction } from "./routes/MainPage";
 
 
@@ -38,6 +39,11 @@ const router = createBrowserRouter([
   {
     path: "/profile",
     element: <Profile />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/admin",
+    element: <Admin />,
     errorElement: <ErrorPage />,
   },
 ]);
