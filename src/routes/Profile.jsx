@@ -7,7 +7,16 @@ import { useEffect, useState } from "react";
 export default function Profile() {
 
     let isLogged = false;
-    if (sessionStorage.getItem('token')) isLogged = true;
+    if (sessionStorage.getItem('token')) {
+        try {
+            let token = JSON.parse(atob(sessionStorage.getItem("token").split('.')[1]))
+            isLogged = token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] == 'customer' || token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] == 'admin';
+
+        } catch {
+            isLogged = false;
+        }
+    }
+
     if (!isLogged) return window.location.href = '/login';
     const customer = JSON.parse(sessionStorage.getItem('customer'));
     const [reservations, setReservations] = useState([]);
@@ -58,7 +67,7 @@ export default function Profile() {
         <div>
             <Nav isLogged={isLogged} />
             <div className="pt-5 container">
-                <h1 className="mb-4">Bienvenido, {customer.name}</h1>
+                <h1 className="mb-4">Bienvenido/a, {customer.name}</h1>
                 <h4>Información personal:</h4>
                 <div className="list-group">
                     <div className="list-group-item list-group-item-action">Nombre: {customer.name}</div>

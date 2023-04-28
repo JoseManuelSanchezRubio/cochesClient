@@ -55,7 +55,10 @@ export default function ChooseCar() {
 
 
     let isLogged = false;
-    if (sessionStorage.getItem('token')) isLogged = true;
+    if (sessionStorage.getItem('token')) {
+        let token = JSON.parse(atob(sessionStorage.getItem("token").split('.')[1]))
+        isLogged = token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] == 'customer';
+    }
 
     return (
         <div>
@@ -86,7 +89,7 @@ export default function ChooseCar() {
                     <br />
                     <CarList cars={cars} />
                     <br />
-                    <Services cars={cars} />
+                    <Services />
                 </div>
             </section>
         </div>

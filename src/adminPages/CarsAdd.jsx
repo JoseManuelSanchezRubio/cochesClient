@@ -69,7 +69,7 @@ export function CarsAdd({ changeBranchAdd }) {
                         {typeCarsList}
                     </select>
                 </div>
-                <button type="submit" className="btn btn-warning mt-3 mb-3" onClick={(e) => saveChanges(e)}>Guardar</button>
+                <button type="submit" className="btn btn-warning mt-3 mb-3" onClick={(e) => saveChanges(e)}>Añadir</button>
             </form>
         </div>
     )

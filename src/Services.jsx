@@ -6,7 +6,14 @@ import { useState } from "react";
 export default function Services() {
 
     let isLogged = false;
-    if (sessionStorage.getItem('token')) isLogged = true;
+    if (sessionStorage.getItem('token')) {
+        let token = JSON.parse(atob(sessionStorage.getItem("token").split('.')[1]))
+        isLogged = token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] == 'customer';
+    }
+
+    const customer = (sessionStorage.getItem("customer"));
+    const customerId = JSON.parse(customer).id;
+
 
     const handleClick = (e) => {
         let carSelected = sessionStorage.getItem("carSelected");
@@ -17,6 +24,8 @@ export default function Services() {
             alert("Debes iniciar sesión");
             window.location.href = "/login";
         }
+
+
 
         const bookingData = sessionStorage.getItem('bookingData');
         const bookingDataJSON = JSON.parse(bookingData);
@@ -46,7 +55,7 @@ export default function Services() {
                     hasGps: hasGps,
                     numberOfDrivers: numberOfDrivers,
                     typeCarId: carSelected,
-                    customerId: 1, //harcoded
+                    customerId: customerId,
                     pickUpBranchId: branchId,
                     returnBranchId: returnBranchId,
 
@@ -71,7 +80,7 @@ export default function Services() {
                     hasGps: hasGps,
                     numberOfDrivers: numberOfDrivers,
                     typeCarId: carSelected,
-                    customerId: 1, //harcoded
+                    customerId: customerId,
                     branchId: branchId,
 
                 })

@@ -24,8 +24,10 @@ export default function CarList(props) {
                 <div className="card-body">
                     <img src={`src/assets/${item.model}.webp`} className='card-img-top mb-2' style={{ width: '250px', height: '150px' }}></img>
                     <h5 className="card-title">{item.brand} {item.model}</h5>
-                    <div className="card-text">{item.isAutomatic ? 'Automático' : 'Manual'}</div>
-                    <div className="card-text mb-2">{item.isGasoline ? 'Gasolina' : 'Diésel'}</div>
+                    <div className='card-text mb-2 d-flex'>
+                        <h5><div className="badge text-bg-secondary me-3"><img src='src/assets/gear.svg' width={'15px'}></img> {item.isAutomatic ? 'Automático' : 'Manual'}</div></h5>
+                        <h5><div className="badge text-bg-secondary"><i className="bi bi-fuel-pump-fill"></i>&nbsp;{item.isGasoline ? 'Gasolina' : 'Diésel'}</div></h5>
+                    </div>
                     <a onClick={e => handleA(e)} className={carSelected == item.id ? 'btn btn-primary' : 'btn btn-warning'} id={item.id}>{carSelected == item.id ? 'Seleccionado' : 'Seleccionar'}</a>
                 </div>
             </div>
@@ -38,7 +40,7 @@ export default function CarList(props) {
     return (
         <div>
             <div className="d-flex flex-wrap">
-                {carsList}
+                {carsList.length == 0 ? 'No hay coches disponibles' : carsList}
             </div>
 
         </div>

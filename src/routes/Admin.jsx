@@ -1,4 +1,5 @@
 import NavAdmin from "../NavAdmin";
+import LoginAdmin from "../adminPages/LoginAdmin";
 import Branches from "./../adminPages/Branches";
 import Cars from "./../adminPages/Cars";
 import Categories from "./../adminPages/Categories";
@@ -14,33 +15,49 @@ export default function Admin() {
     const [section, setSection] = useState("categorias");
     const handleSection = (section) => {
         setSection(section);
+        sessionStorage.setItem('section', section);
     }
-    //console.log(section)
-    return ( //cambiar a conditional rendering
-        <div>
-            <NavAdmin changeSection={handleSection} />
+    let logged = false;
+    if (sessionStorage.getItem('adminToken')) {
+        let token = JSON.parse(atob(sessionStorage.getItem("adminToken").split('.')[1]))
+        logged = token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] == 'admin';
+    }
 
-            <div className="container pt-3">
-                <section className={section == 'categorias' ? '' : 'visually-hidden'}>
-                    <Categories />
-                </section>
 
-                <section className={section == 'clientes' ? '' : 'visually-hidden'}>
-                    <Customers />
-                </section>
+    if (logged) {
+        return ( //cambiar a conditional rendering
+            <div>
+                <NavAdmin changeSection={handleSection} />
 
-                <section className={section == 'coches' ? '' : 'visually-hidden'}>
-                    <Cars />
-                </section>
+                <div className="container pt-3">
+                    <section className={sessionStorage.getItem('section') == 'categorias' ? '' : 'visually-hidden'}>
+                        <Categories />
+                    </section>
 
-                <section className={section == 'reservas' ? '' : 'visually-hidden'}>
-                    <Reservations />
-                </section>
+                    <section className={sessionStorage.getItem('section') == 'clientes' ? '' : 'visually-hidden'}>
+                        <Customers />
+                    </section>
 
-                <section className={section == 'sucursales' ? '' : 'visually-hidden'}>
-                    <Branches />
-                </section>
+                    <section className={sessionStorage.getItem('section') == 'coches' ? '' : 'visually-hidden'}>
+                        <Cars />
+                    </section>
+
+                    <section className={sessionStorage.getItem('section') == 'reservas' ? '' : 'visually-hidden'}>
+                        <Reservations />
+                    </section>
+
+                    <section className={sessionStorage.getItem('section') == 'sucursales' ? '' : 'visually-hidden'}>
+                        <Branches />
+                    </section>
+                </div>
             </div>
-        </div>
-    )
+        )
+    } else {
+        return (
+            <LoginAdmin></LoginAdmin>
+        )
+    }
+
+
+
 }

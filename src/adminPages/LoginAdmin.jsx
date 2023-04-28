@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Nav from "../Nav";
+import NavAdmin from "../NavAdmin";
 
-export default function Login() {
+
+export default function LoginAdmin() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -12,13 +13,15 @@ export default function Login() {
 
     function checkLogin(data) {
         if (data.status) {
-            sessionStorage.setItem('token', data.token)
-            sessionStorage.setItem('customer', JSON.stringify(data.customer))
             token = JSON.parse(atob(data.token.split('.')[1]));
-            console.log(token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'])
-
-            if (sessionStorage.getItem('bookingData')) window.location.href = "/booking";
-            if (!sessionStorage.getItem('bookingData')) window.location.href = "/";
+            //console.log(token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'])
+            if (token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] == 'admin') {
+                sessionStorage.setItem('adminToken', data.token);
+                sessionStorage.setItem('section', 'categorias');
+                window.location.href = '/admin';
+            } else {
+                alert("You are not an admin");
+            }
         } else {
             alert(data.token);
         }
@@ -52,7 +55,7 @@ export default function Login() {
 
     return (
         <div>
-            <Nav isLogged={isLogged} />
+            <NavAdmin />
             <section className="d-flex justify-content-center pt-5">
                 <div>
                     <h1 className="mb-4">Iniciar sesión</h1>
@@ -70,10 +73,6 @@ export default function Login() {
 
                         <button type="submit" className="btn btn-warning btn-block mb-4" onClick={handleSubmit}>Iniciar sesión</button>
 
-
-                        <div className="text-center">
-                            <p>¿No tienes una cuenta? <Link to='/logup'>Regístrate</Link></p>
-                        </div>
                     </form>
                 </div>
             </section>

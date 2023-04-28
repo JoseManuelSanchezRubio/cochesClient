@@ -19,7 +19,7 @@ export default function Categories() {
             <div className={selectedCategory != category.id ? "card me-2" : "card me-2 border border-primary"} key={category.id}>
 
                 <div className="card-body">
-                    <img src={`src/assets/${category.model}.png`} className='card-img-top mb-2' style={{ width: '250px', height: '150px' }}></img>
+                    <img src={`src/assets/${category.model}.webp`} className='card-img-top mb-2' style={{ width: '250px', height: '150px' }}></img>
                     <h4 className="card-title">Categoría {category.name}</h4>
                     <h5 className="card-title">{category.brand} {category.model}</h5>
                     <div className="card-text">Tipo de cambio: {category.isAutomatic ? 'Automático' : 'Manual'}</div>
