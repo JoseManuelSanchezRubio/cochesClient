@@ -12,7 +12,7 @@ export default function Reservations() {
             })
     }, [])
 
-    const dateOptions = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+    const dateOptions = { year: 'numeric', month: 'numeric', day: 'numeric' };
 
     const [reservations, setReservations] = useState([])
     const [reservationsList, setReservationsList] = useState([])
@@ -23,13 +23,13 @@ export default function Reservations() {
         let table = list.map(item => {
             const initialDateParsed = new Date(item.initialDate).toLocaleDateString('es-ES', dateOptions);
             const finalDateParsed = new Date(item.finalDate).toLocaleDateString('es-ES', dateOptions);
-            //console.log(initialDateParsed) no sé como meterlo en el return
+            console.log(finalDateParsed - initialDateParsed)
             return (
                 <tbody key={item.id}>
                     <tr>
                         <th scope="row">{item.id}</th>
-                        <td>{item.initialDate}</td>
-                        <td>{item.finalDate}</td>
+                        <td>{initialDateParsed}</td>
+                        <td>{finalDateParsed}</td>
                         <td>{item.branchId}</td>
                         <td>{item.returnBranchId}</td>
                         <td>{item.carId}</td>
@@ -92,7 +92,7 @@ export default function Reservations() {
                     </div>
                 </div>
             </form>
-            <table className="table">
+            <table className="table text-center">
                 <thead>
                     <tr>
                         <th scope="col">#</th>

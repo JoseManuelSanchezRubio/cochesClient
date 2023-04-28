@@ -20,7 +20,6 @@ export default function Cars() {
     const [carsList, setCarsList] = useState([]);
     const [updateSelectedCar, setUpdateSelectedCar] = useState();
 
-
     function sortBy() {
 
         setCarsList(refreshTable(cars.sort(compare)));
@@ -75,6 +74,7 @@ export default function Cars() {
                         <td>{item.isAutomatic ? 'Automático' : 'Manual'}</td>
                         <td>{item.isGasoline ? 'Gasolina' : 'Diésel'}</td>
                         <td>{item.typeCarId}</td>
+                        <td>{item.price}</td>
                         <td><button className="btn btn-warning" id={item.id} onClick={(e) => setUpdateSelectedCar(e.target.id)}>Editar</button></td>
                         <td><button className="btn btn-danger" id={item.id} onClick={(e) => deleteCar(e)}>Eliminar</button></td>
                     </tr>
@@ -87,7 +87,7 @@ export default function Cars() {
     return (
         <div>
             <h3 className="mb-3">Coches</h3>
-            <table className="table">
+            <table className="table mb-5">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -101,13 +101,14 @@ export default function Cars() {
                         <th scope="col">Tipo de cambio</th>
                         <th scope="col">Tipo de combustible</th>
                         <th scope="col">Categoría</th>
+                        <th scope="col">Precio/día</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 {carsList}
             </table>
-            <section>
+            <section className="mb-4">
                 <CarsAdd></CarsAdd>
             </section>
             <section className={updateSelectedCar != null ? '' : 'visually-hidden'}>

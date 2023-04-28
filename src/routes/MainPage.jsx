@@ -17,6 +17,9 @@ export async function action() {
     let age = document.getElementById('age').value;
     let inAnotherBranch = document.getElementById('returnInAnotherBranchCheck').checked;
 
+    let days = new Date(finalDate).getTime() - new Date(initialDate).getTime();
+    sessionStorage.setItem('days', days / 86400000);
+
 
     if (initialDate == '' || finalDate == '') {
         alert("Rellena todos los campos");

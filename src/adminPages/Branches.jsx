@@ -57,11 +57,11 @@ export default function Branches() {
 
     return (
         <div>
-            <section>
+            <section className="mb-5">
                 <h3>Sucursales</h3>
                 <div className="d-flex flex-wrap">{branchesList}</div>
             </section>
-            <section>
+            <section className="mb-4">
                 <BranchesAdd></BranchesAdd>
             </section>
             <section>

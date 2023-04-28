@@ -11,6 +11,7 @@ import Profile from './routes/Profile';
 import ChooseCar from './routes/ChooseCar';
 import Admin from './routes/Admin';
 import MainPage, { loader as mainPageLoader, action as mainPageAction } from "./routes/MainPage";
+import '../index.css'
 
 
 const router = createBrowserRouter([
