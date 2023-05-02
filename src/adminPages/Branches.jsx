@@ -14,7 +14,6 @@ export default function Branches() {
 
     const [branches, setBranches] = useState([]);
     const [branchSelected, setBranchSelected] = useState(null);
-    console.log(branchSelected)
 
     function selectBranch(e) {
         if (branchSelected == e.target.id) {
@@ -57,7 +56,7 @@ export default function Branches() {
 
     return (
         <div>
-            <section className="mb-5">
+            <section className="mb-4">
                 <h3>Sucursales</h3>
                 <div className="d-flex flex-wrap">{branchesList}</div>
             </section>

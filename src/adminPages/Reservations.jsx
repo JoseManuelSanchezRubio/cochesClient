@@ -23,7 +23,6 @@ export default function Reservations() {
         let table = list.map(item => {
             const initialDateParsed = new Date(item.initialDate).toLocaleDateString('es-ES', dateOptions);
             const finalDateParsed = new Date(item.finalDate).toLocaleDateString('es-ES', dateOptions);
-            console.log(finalDateParsed - initialDateParsed)
             return (
                 <tbody key={item.id}>
                     <tr>

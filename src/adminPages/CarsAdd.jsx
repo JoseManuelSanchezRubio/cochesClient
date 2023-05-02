@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export function CarsAdd({ changeBranchAdd }) {
+export function CarsAdd() {
 
     useEffect(() => {
         fetch(`http://localhost:5218/api/Branch`)

@@ -52,8 +52,8 @@ export default function ChooseCar() {
 
     }
 
-    const customer = (sessionStorage.getItem("customer"));
-    const customerId = JSON.parse(customer).id;
+    const customer = JSON.parse(sessionStorage.getItem("customer"));
+    //const customerId = JSON.parse(customer).id;
 
 
     const book = (e) => {
@@ -96,7 +96,7 @@ export default function ChooseCar() {
                     hasGps: hasGps,
                     numberOfDrivers: numberOfDrivers,
                     typeCarId: carSelected,
-                    customerId: customerId,
+                    customerId: customer.id,
                     pickUpBranchId: branchId,
                     returnBranchId: returnBranchId,
 

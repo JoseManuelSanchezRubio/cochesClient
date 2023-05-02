@@ -17,7 +17,7 @@ export default function Nav(props) {
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className={props.isLogged ? "collapse navbar-collapse visually-hidden" : "collapse navbar-collapse"} id="navbarNav">
-                <ul className="navbar-nav">
+                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                     <li className="nav-item">
                         <Link className="nav-link" to="/login">Login</Link>
                     </li>
@@ -25,9 +25,12 @@ export default function Nav(props) {
                         <Link className="nav-link" to="/logup">Logup</Link>
                     </li>
                 </ul>
+                <div className="navbar-nav me-5">
+                    <Link className="nav-link" to={'/admin'}>Admin</Link>
+                </div>
             </div>
             <div className={props.isLogged ? "collapse navbar-collapse" : "collapse navbar-collapse visually-hidden"} id="navbarNav">
-                <ul className="navbar-nav">
+                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                     <li className="nav-item">
                         <Link className="nav-link" to="/profile">Mi perfil</Link>
                     </li>
@@ -35,6 +38,9 @@ export default function Nav(props) {
                         <a className="nav-link" onClick={logout} style={{ cursor: 'pointer' }}>Cerrar sesión</a>
                     </li>
                 </ul>
+                <div className="navbar-nav me-5">
+                    <Link className="nav-link" to={'/admin'}>Admin</Link>
+                </div>
             </div>
         </nav>
     )
